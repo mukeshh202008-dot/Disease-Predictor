@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disease Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h1>🩺 Disease Predictor</h1>
+    <p class="subtitle">Check your symptoms instantly</p>
+
+    <form action="/predict" method="post">
+
+        <div class="input-group">
+            <label>Fever</label>
+            <select name="fever">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Cough</label>
+            <select name="cough">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Headache</label>
+            <select name="headache">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Tiredness</label>
+            <select name="tiredness">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Cold</label>
+            <select name="cold">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <button type="submit">🔍 Predict</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            <h2>🩺 Health Result</h2>
+            <p class="disease">{{ prediction }}</p>
+            <p class="advice">{{ advice }}</p>
+            <p class="note">⚠️ This is only a basic prediction. Please consult a doctor for accurate diagnosis.</p>
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
